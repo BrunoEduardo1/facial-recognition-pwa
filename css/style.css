@@ -21,10 +21,24 @@ body {
 	background-origin.
 
 }
+
+#canvas {
+    top: -25px;
+    right: 70px;
+    /*bottom: 200px;*/
+}
+
 @media (min-width: 300px) and (max-width: 600px) {
 	#profileImage{
-		width: 90%;
+		width: 84%;
 		    margin-right: auto!important;
+	}
+
+	#canvas {
+	    top: 0px;
+	    right: 0px;
+	    left: -11%;
+	    bottom: 14px;
 	}
 }
 
@@ -38,5 +52,11 @@ body {
 	}
 	#profileImage {
 		width: 30%;
+	}
+	canvas {
+    	margin-left: 6%;
+    	margin-top: 9%;
+    	/*margin-left: 36px;*/
+    	/*margin-top: 24px;*/
 	}	
 }
