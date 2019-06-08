@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+.title{
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.icon-size-5 {
+	font-size: 5rem;
+}
+
+.icon-size-4 {
+	font-size: 4rem;
+}
+
+body {
+	min-height: 100vh; 
+	/*background-image: url('../imgs/undraw_selfie1_kpqf.svg');*/
+	/*background-position*/
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-origin.
+
+}
+@media (min-width: 300px) and (max-width: 600px) {
+	#profileImage{
+		width: 90%;
+		    margin-right: auto!important;
+	}
+}
+
+@media (min-width: 700px) {
+	body {
+		background-image: url('../imgs/undraw_selfie1_kpqf.svg');
+		background-position: center bottom 45%;
+		background-size: 30%;
+		background-repeat: no-repeat;
+		background-origin.
+	}
+	#profileImage {
+		width: 30%;
+	}	
+}
