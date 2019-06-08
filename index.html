@@ -8,6 +8,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="author" content="Bruno Eduardo">
   <meta name="description" content="Aplicação simples de reconhecimento facial">
+  <meta name="theme-color" content="#3E4EB8">
   <title>Reconhecimento facial</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -39,7 +40,7 @@
      <div class="row">
 
       <div class="col-12 mt-4 text-center">
-          <img src="imgs/undraw_profile_pic_ic5t.svg" id="profileImage" class="mx-auto">
+          <img src="imgs/undraw_profile_pic_ic5t.svg" id="profileImage" class="mx-auto" alt="Person picture">
       </div>
 
       <div class="col-6 col-md-6 text-center mt-4 mx-auto">
@@ -71,6 +72,18 @@
   <script type="text/javascript" src="js/face-api.js"></script>
   <!-- Main js -->
   <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript">
+    // CODELAB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((reg) => {
+              console.log('Service worker registered.', reg);
+            });
+      });
+    }
+  </script>
+  <!-- <script src="js/install.js"></script> -->
 </body>
 
 </html>
