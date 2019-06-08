@@ -44,7 +44,7 @@ body {
 
 @media (min-width: 700px) {
 	body {
-		background-image: url('../imgs/undraw_selfie1_kpqf.svg');
+		/*background-image: url('../imgs/undraw_selfie1_kpqf.svg');*/
 		background-position: center bottom 45%;
 		background-size: 30%;
 		background-repeat: no-repeat;
