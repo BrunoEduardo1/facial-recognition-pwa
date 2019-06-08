@@ -3,7 +3,7 @@
     $('#camButton').on('click', function() {
     	console.log("Abrir camera");
 
-    	var header = "Conceda a permissão a câmera";
+    	var header = "Conceda permissão a câmera";
 		var content = '<div class="row">'+
 						  '<div class="col-12 mx-auto text-center" id="videoDiv">'+
 						    '<video id="video" class="img-thumbnail" width="400" height="260" autoplay muted></video>'+
