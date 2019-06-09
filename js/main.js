@@ -44,6 +44,53 @@
 
     $('#uploadButton').on('click', function() {
     	console.log("Submeter arquivo");
+
+    	var header = "Faça o envio da imagem";
+		var content = '<div class="row">'+
+						  '<div class="col-12 mx-auto text-center" id="imgDiv">'+
+						    '<div id="canvas"></div>'+
+						    '<img id="myImg" class="img-thumbnail" width="400" height="260" src=""/>'+
+						    '<div id="uploadForm"><label class="btn btn-primary" for="myFileUpload">'+
+								'<input id="myFileUpload" type="file" accept=".jpg, .jpeg, .png" style="display:none">'+
+								'Escolher Arquivo'+
+							'</label></div>'+
+						  '</div>'+
+						'</div>';
+		var strSubmitFunc = "applyButtonFunc()";
+		var btnText = "Just do it!";
+		doModal('idMyModal', header, content, strSubmitFunc, btnText);
+
+		$('#myFileUpload').on('change', async function() {
+
+			const imgFile = document.getElementById('myFileUpload').files[0];
+
+			$('#uploadForm').remove();
+
+			// create an HTMLImageElement from a Blob
+			const img = await faceapi.bufferToImage(imgFile);
+			
+			document.getElementById('myImg').src = img.src;
+			document.getElementById('myImg').width = img.width;
+			document.getElementById('myImg').height = img.height;
+			//Load models for face recognition net
+			Promise.all([ faceapi.nets.tinyFaceDetector.loadFromUri('js/models/')]).then( async () => {
+				$('#canvas' ).addClass('position-absolute');
+				const canvas = faceapi.createCanvasFromMedia(img);
+				canvas.id = 'imgRec';
+				document.getElementById('canvas').append(canvas);
+				const displaySize = { width: img.width, height: img.height };
+				faceapi.matchDimensions(canvas, displaySize)
+				const detections = await faceapi.detectAllFaces(document.getElementById('myImg'), new faceapi.TinyFaceDetectorOptions())/*.withFaceLandmarks().withFaceExpressions()*/
+				const resizedDetections = faceapi.resizeResults(detections, displaySize)
+				canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+				faceapi.draw.drawDetections(canvas, resizedDetections)
+				// faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+				// faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+
+			})
+
+		});
+
     });
 	function startVideo() {
 	  navigator.getUserMedia(
